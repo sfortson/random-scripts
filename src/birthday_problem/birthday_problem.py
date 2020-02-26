@@ -15,7 +15,7 @@ def main():
     parser.add_argument('num_people')
     args = parser.parse_args()
 
-    print 100 * probability(int(args.num_people))
+    print(100 * probability(int(args.num_people)))
 
 
 if __name__ == '__main__':
