@@ -1,5 +1,4 @@
-from binary_search_trees.binary_search_trees import *
-from binary_search_trees.helpers import *
+from binary_search_trees import *
 
 
 def build_test_tree():
