@@ -17,8 +17,7 @@ pyparsing==2.4.6
 pytest==5.3.5
 python-dateutil==2.8.1
 python-editor==1.0.4
-random-scripts==1.3.1
-sampleproject==1.3.1
+random-scripts==0.0.1
 six==1.14.0
 SQLAlchemy==1.3.13
 wcwidth==0.1.8
