@@ -1,12 +1,13 @@
-import click
-from math import sqrt
 import sys
+from math import sqrt
+
+import click
 
 
 @click.command()
 @click.argument('number', type=click.INT)
 def main(number):
-    print sieve_of_eratosthenes(number)
+    print(sieve_of_eratosthenes(number))
 
 
 def sieve_of_eratosthenes(number):
