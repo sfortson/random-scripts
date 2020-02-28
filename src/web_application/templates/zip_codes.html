@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block headline %}
+  Zip Codes
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% for zip_code in zip_codes %}
+    <p><a href="/zip/{{ zip_code }}">{{ zip_code }}</a></p>
+  {% endfor %}
+</div>
+{% endblock %}
