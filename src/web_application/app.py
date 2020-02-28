@@ -39,6 +39,19 @@ def about():
     return "All about my website!"
 
 
+@app.route("/city")
+def city_list():
+    # Get the unique city values from the database
+    cities = School.query.with_entities(School.city).distinct().all()
+    # They're in a weird list of one-element lists, though, like
+    # [['Yonkers'],['Brooklyn'],['Manhattan']]
+    # so we'll take them out of that
+    cities = [city[0].title() for city in cities]
+    # Now that they're both "New York," we can now dedupe and sort
+    cities = sorted(list(set(cities)))
+    return render_template("cities.html", cities=cities)
+
+
 @app.route('/city/<city_name>')
 def city(city_name):
     city_name = city_name.replace("-", " ")
@@ -56,6 +69,14 @@ def detail(slug):
 def zip(zipcode):
     schools = School.query.filter_by(ZIP=zipcode).all()
     return render_template("list.html", schools=schools, count=len(schools), location=zipcode)
+
+
+@app.route('/zip')
+def zip_list():
+    zip_codes = School.query.with_entities(School.ZIP).distinct().all()
+    zip_codes = [zip_code[0] for zip_code in zip_codes]
+    zip_codes = sorted(list(set(zip_codes)))
+    return render_template('zip_codes.html', zip_codes=zip_codes)
 
 
 if __name__ == '__main__':
