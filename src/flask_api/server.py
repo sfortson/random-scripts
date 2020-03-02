@@ -1,14 +1,17 @@
 from datetime import datetime
 
-from flask import Flask, request, render_template
-from flask_restplus import Api, Resource, fields, reqparse
+from flask import Flask, request, render_template, Blueprint
+from flask_restplus import Api, Resource, fields
 
 # Create the application instance
 app = Flask(__name__)
 
 # Read the swagger.yml file to configure the endpoints
-api = Api(app)
-ns = api.namespace('people', description='People APIs', path='/api/people')
+blueprint = Blueprint('api', __name__, url_prefix='/api')
+api = Api(blueprint)
+ns = api.namespace('people', description='People APIs', path='/')
+
+app.register_blueprint(blueprint)
 
 
 def get_timestamp():
@@ -41,12 +44,12 @@ model = api.model('People Model', {
 })
 
 
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template("home.html")
 
 
-@ns.route('/')
+@ns.route('/people')
 class AllPeople(Resource):
     # Create a handler for our read (GET) people
     @staticmethod
@@ -88,8 +91,12 @@ class AllPeople(Resource):
 
 
 # noinspection PyUnresolvedReferences
-@ns.route('/<string:lname>')
+@ns.route('/people/<string:lname>')
 class OnePerson(Resource):
+    @staticmethod
+    def lname_not_found(lname):
+        ns.abort(404, "Person with last name {lname} not found".format(lname=lname))
+
     @api.doc(responses={200: 'OK', 400: 'Invalid Argument', 500: 'Mapping Key Error'},
              params={'lname': 'Specify the last name associated with the person'})
     def get(self, lname):
@@ -107,7 +114,7 @@ class OnePerson(Resource):
 
         # otherwise, nope, not found
         else:
-            ns.abort(404, "Person with last name {lname} not found".format(lname=lname))
+            self.lname_not_found(lname)
 
         return
 
@@ -120,19 +127,33 @@ class OnePerson(Resource):
         :param lname:
         :return: person object
         """
-        last_name = request.json['lname']
         first_name = request.json['fname']
 
+        print(lname, first_name)
+
         if lname in PEOPLE:
-            new_person = {'fname': first_name, 'lname': last_name, 'timestamp': get_timestamp()}
+            new_person = {'fname': first_name, 'lname': lname, 'timestamp': get_timestamp()}
             PEOPLE[lname].update(new_person)
 
             return {
-                'status': 'Person added',
+                'status': 'Person updated',
                 'person': new_person
             }, 200
 
-        return {'status': 'Not Found'}, 200
+        self.lname_not_found(lname)
+
+    def delete(self, lname):
+        last_name = lname
+
+        if last_name not in PEOPLE:
+            self.lname_not_found(last_name)
+
+        person = PEOPLE[last_name]
+
+        del(PEOPLE[last_name])
+
+        return {'status': 'Removed {}'.format(last_name),
+                'person_removed': person}, 200
 
 
 if __name__ == '__main__':
