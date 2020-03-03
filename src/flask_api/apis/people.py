@@ -43,6 +43,7 @@ class AllPeople(Resource):
             new_person = schema.load(json_data, session=db.session)
         except ValidationError as err:
             api.abort(400, str(err))
+            raise
 
         first_name, last_name = new_person.fname, new_person.lname
 
@@ -52,7 +53,7 @@ class AllPeople(Resource):
             .one_or_none()
 
         if existing_person:
-            api.abort(409, 'Person {} {} already exisits in the database'.format(first_name, last_name))
+            api.abort(409, 'Person {} {} already exists in the database'.format(first_name, last_name))
 
         db.session.add(new_person)
         db.session.commit()
@@ -104,6 +105,7 @@ class OnePerson(Resource):
             new_person = schema.load(json_data, session=db.session)
         except ValidationError as err:
             api.abort(400, str(err))
+            raise
 
         existing_person = Person.query \
             .filter(Person.person_id == person_id) \

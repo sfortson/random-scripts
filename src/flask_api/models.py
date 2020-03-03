@@ -1,8 +1,7 @@
 from datetime import datetime
 
-from marshmallow import post_load
-
 from config import db, ma
+from marshmallow import post_load
 
 
 class Person(db.Model):
