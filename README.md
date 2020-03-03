@@ -6,8 +6,8 @@ A place for me to put my little projects
 - `source .venv/bin/activate`
 
 ### Install packages
-- `pip install -r requirements.txt`
 - `pip install .`
+- `pip install -r requirements.txt`
 
 ## Unit tests
 You can run unit tests by running: `pytest`
