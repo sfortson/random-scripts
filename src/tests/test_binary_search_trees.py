@@ -37,3 +37,9 @@ def test_min_max():
 
 def test_tree_successor():
     assert tree_successor(T.root).key == 7
+
+
+def test_tree_insert():
+    new_node = Node(3)
+    tree_insert(T, new_node)
+    assert tree_search(T.root, 3).key == 3

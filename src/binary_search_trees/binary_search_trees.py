@@ -42,3 +42,21 @@ def tree_successor(x):
         x = y
         y = y.p
     return y
+
+
+def tree_insert(tree, z):
+    y = None
+    x = tree.root
+    while x is not None:
+        y = x
+        if z.key < x.key:
+            x = x.left
+        else:
+            x = x.right
+    z.p = y
+    if y is None:
+        tree.root = z
+    elif z.key < y.key:
+        y.left = z
+    else:
+        y.right = z
