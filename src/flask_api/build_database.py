@@ -1,7 +1,7 @@
 import os
 
-from config import db
-from models import Person
+from flask_api.server import db
+from flask_api.models import Person
 
 # Data to initialize database with
 PEOPLE = [

@@ -1,9 +1,9 @@
 from flask import make_response, request
-from flask_restplus import Namespace, Resource, fields
+from flask_restx import Namespace, Resource, fields
 from marshmallow import ValidationError
 
-from config import db
-from models import Person, PersonSchema
+from flask_api.server import db
+from flask_api.models import Person, PersonSchema
 
 api = Namespace('people', description='People related operations')
 
