@@ -27,7 +27,7 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
-	pb "github.com/sfortson/random-scripts/src/go/grpc/helloworld/proto"
+	pb "github.com/sfortson/random-scripts/go/grpc/helloworld/proto/helloworld"
 )
 
 var (
@@ -44,7 +44,7 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 	log.Printf("Received: %v", in.GetName())
 	var msg = new(string)
 	*msg = "Hello " + in.GetName()
-	return &pb.HelloReply{Message: msg}, nil
+	return &pb.HelloReply{Message: *msg}, nil
 }
 
 func main() {
