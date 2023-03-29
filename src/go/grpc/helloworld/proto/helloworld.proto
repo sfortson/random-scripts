@@ -1,6 +1,6 @@
 
 syntax = "proto3";
-option go_package = "github.com/sfortson/random-scripts";
+option go_package = "github.com/sfortson/random-scripts/go/grpc/helloworld/proto/helloworld";
 
 // The greeting service definition.
 service Greeter {
