@@ -1,0 +1,7 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+py_binary(
+    name = "sieve_of_eratosthenes",
+    srcs = ["sieve_of_eratosthenes.py"],
+    deps = ["@pypi_click//:pkg"],
+)

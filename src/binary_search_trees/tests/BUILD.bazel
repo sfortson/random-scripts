@@ -1,0 +1,11 @@
+load("@rules_python//python:defs.bzl", "py_test")
+
+py_test(
+    name = "test_binary_search_trees",
+    srcs = ["test_binary_search_trees.py"],
+    deps = [
+        "//src/binary_search_trees",
+        "//src/binary_search_trees:helpers",
+        "@pypi_pytest//:pkg",
+    ],
+)

@@ -1,16 +1,32 @@
-def inorder_tree_walk(x):
-    if x is not None:
-        inorder_tree_walk(x.left)
-        print(x.key)
-        inorder_tree_walk(x.right)
+"""Binary search tree algorithms"""
+
+def inorder_tree_walk(node):
+    """Inorder tree walk
+
+    :param node: node
+    :type node: Node
+    """
+    if node is not None:
+        inorder_tree_walk(node.left)
+        print(node.key)
+        inorder_tree_walk(node.right)
 
 
-def tree_search(x, k):
-    if x is None or k == x.key:
-        return x
-    if k < x.key:
-        return tree_search(x.left, k)
-    return tree_search(x.right, k)
+def tree_search(node, key):
+    """Search in a tree
+
+    :param node: Node
+    :type node: Node
+    :param k: _description_
+    :type k: _type_
+    :return: _description_
+    :rtype: _type_
+    """
+    if node is None or key == node.key:
+        return node
+    if key < node.key:
+        return tree_search(node.left, key)
+    return tree_search(node.right, key)
 
 
 def iterative_tree_search(x, k):

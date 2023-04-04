@@ -1,35 +1,68 @@
 {
-    "go.goroot": "${workspaceFolder}/bazel-${workspaceFolderBasename}/external/go_sdk",
-    "go.toolsEnvVars": {
-      "GOPACKAGESDRIVER": "${workspaceFolder}/tools/gopackagesdriver.sh"
+  "go.goroot": "${workspaceFolder}/bazel-${workspaceFolderBasename}/external/go_sdk",
+  "go.toolsEnvVars": {
+    "GOPACKAGESDRIVER": "${workspaceFolder}/tools/gopackagesdriver.sh"
+  },
+  "go.enableCodeLens": {
+    "runtest": false
+  },
+  "gopls": {
+    "build.directoryFilters": [
+      "-bazel-bin",
+      "-bazel-out",
+      "-bazel-testlogs",
+      "-bazel-mypkg",
+    ],
+    "formatting.gofumpt": true,
+    "formatting.local": "github.com/sfortson/random-scripts",
+    "ui.completion.usePlaceholders": true,
+    "ui.semanticTokens": true,
+    "ui.codelenses": {
+      "gc_details": false,
+      "regenerate_cgo": false,
+      "generate": false,
+      "test": false,
+      "tidy": false,
+      "upgrade_dependency": false,
+      "vendor": false
     },
-    "go.enableCodeLens": {
-      "runtest": false
-    },
-    "gopls": {
-      "build.directoryFilters": [
-        "-bazel-bin",
-        "-bazel-out",
-        "-bazel-testlogs",
-        "-bazel-mypkg",
-      ],
-      "formatting.gofumpt": true,
-      "formatting.local": "github.com/sfortson/random-scripts",
-      "ui.completion.usePlaceholders": true,
-      "ui.semanticTokens": true,
-      "ui.codelenses": {
-        "gc_details": false,
-        "regenerate_cgo": false,
-        "generate": false,
-        "test": false,
-        "tidy": false,
-        "upgrade_dependency": false,
-        "vendor": false
-      },
-    },
-    "go.useLanguageServer": true,
-    "go.buildOnSave": "off",
-    "go.lintOnSave": "off",
-    "go.vetOnSave": "off",
-  }
+  },
+  "go.useLanguageServer": true,
+  "go.buildOnSave": "off",
+  "go.lintOnSave": "off",
+  "go.vetOnSave": "off",
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": false,
+  "isort.args": [
+      "--profile",
+      "black",
+  ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [
+      "-l 100",
+      "--experimental-string-processing"
+  ],
+  "[python]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+          "source.organizeImports": true,
+      }
+  },
+  "python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black",
+  "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint",
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.enabled": true,
+  "autoDocstring.docstringFormat": "sphinx",
+  // "python.defaultInterpreterPath": "${workspaceFolder}/bazel-bin/src/binary_search_trees/bst.runfiles/python3_10_aarch64-apple-darwin/bin/python3.10",
+  "isort.interpreter": [
+      "${workspaceFolder}/.venv/bin/python"
+  ],
+  "bazel.buildifierFixOnFormat": true,
+  "protoc": {
+    "options": [
+      "--proto-path=${workspaceRoot}/bazel-pg/external/com_google_protobuf/src/google/protobuf"
+    ],
+  },
+}
   
