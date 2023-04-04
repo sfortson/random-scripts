@@ -5,14 +5,14 @@ import click
 
 
 @click.command()
-@click.argument('number', type=click.INT)
+@click.argument("number", type=click.INT)
 def main(number):
     print(sieve_of_eratosthenes(number))
 
 
 def sieve_of_eratosthenes(number):
     if number <= 1:
-        sys.exit('Input number must be greater than 1')
+        sys.exit("Input number must be greater than 1")
 
     prime_array = [True for x in range(number + 1)]
 
@@ -22,7 +22,7 @@ def sieve_of_eratosthenes(number):
             idx = 0
             while j <= number:
                 prime_array[j] = False
-                j = i**2 + idx*i
+                j = i**2 + idx * i
                 idx += 1
 
     primes = []
@@ -33,5 +33,6 @@ def sieve_of_eratosthenes(number):
     return primes
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # pylint: disable=no-value-for-parameter
     main()

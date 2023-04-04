@@ -80,6 +80,7 @@ confidence=
 # --disable=W".
 disable=raw-checker-failed,
         bad-inline-option,
+        import-error,
         locally-disabled,
         file-ignored,
         suppressed-message,

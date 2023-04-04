@@ -2,8 +2,8 @@ import click
 
 
 def factorial_iterative(n):
-    if type(n) != int or n < 0:
-        raise ValueError('Input must be a positive integer')
+    if not isinstance(n, int) or n < 0:
+        raise ValueError("Input must be a positive integer")
 
     ans = 1
     for i in range(n, 1, -1):
@@ -12,8 +12,8 @@ def factorial_iterative(n):
 
 
 def factorial_recursive(n):
-    if type(n) != int or n < 0:
-        raise ValueError('Input must be an integer')
+    if not isinstance(n, int) or n < 0:
+        raise ValueError("Input must be a positive integer")
 
     if n == 0:
         return 1
@@ -22,8 +22,8 @@ def factorial_recursive(n):
 
 
 @click.command()
-@click.argument('num')
-@click.option('-i', '--iterative', is_flag=True, default=False, help='Use the iterative solution')
+@click.argument("num")
+@click.option("-i", "--iterative", is_flag=True, default=False, help="Use the iterative solution")
 def main(num, iterative):
     if iterative:
         print(factorial_iterative(int(num)))
@@ -31,5 +31,6 @@ def main(num, iterative):
         print(factorial_recursive(int(num)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # pylint: disable=no-value-for-parameter
     main()
