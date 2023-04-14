@@ -1,5 +1,7 @@
 
 syntax = "proto3";
+
+// protolint:disable:next MAX_LINE_LENGTH
 option go_package = "github.com/sfortson/random-scripts/go/grpc/helloworld/proto/helloworld";
 
 // The greeting service definition.

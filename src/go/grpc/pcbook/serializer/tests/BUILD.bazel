@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "tests_test",
+    srcs = ["file_test.go"],
+    importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/serializer/tests",
+    deps = [
+        "//src/go/grpc/pcbook/proto",
+        "//src/go/grpc/pcbook/sample",
+        "//src/go/grpc/pcbook/serializer",
+        "@com_github_stretchr_testify//require",
+        "@org_golang_google_protobuf//proto",
+    ],
+)

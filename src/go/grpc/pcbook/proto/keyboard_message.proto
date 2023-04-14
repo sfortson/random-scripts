@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package src.go.grpc.pcbook;
+
+// protolint:disable:next MAX_LINE_LENGTH
+option go_package = "github.com/sfortson/random-scripts/go/grpc/pcbook/proto";
+
+message Keyboard {
+  enum Layout {
+    LAYOUT_UNKNOWN_UNSPECIFIED = 0;
+    LAYOUT_QWERTY = 1;
+    LAYOUT_QWERTZ = 2;
+    LAYOUT_AZERTY = 3;
+  }
+
+  Layout layout = 1;
+  bool backlit = 2;
+}

@@ -54,14 +54,13 @@
   "python.linting.flake8Enabled": false,
   "python.linting.enabled": true,
   "autoDocstring.docstringFormat": "sphinx",
-  // "python.defaultInterpreterPath": "${workspaceFolder}/bazel-bin/src/binary_search_trees/bst.runfiles/python3_10_aarch64-apple-darwin/bin/python3.10",
   "isort.interpreter": [
       "${workspaceFolder}/.venv/bin/python"
   ],
   "bazel.buildifierFixOnFormat": true,
   "protoc": {
     "options": [
-      "--proto-path=${workspaceRoot}/bazel-pg/external/com_google_protobuf/src/google/protobuf"
+      "--proto-path=${workspaceRoot}/bazel-random-scripts/external/com_google_protobuf/src/google/protobuf"
     ],
   },
 }
