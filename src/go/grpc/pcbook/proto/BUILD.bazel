@@ -7,6 +7,7 @@ proto_library(
     srcs = [
         "keyboard_message.proto",
         "laptop_message.proto",
+        "laptop_service.proto",
         "memory_message.proto",
         "processor_message.proto",
         "screen_message.proto",
@@ -20,6 +21,7 @@ proto_library(
 
 go_proto_library(
     name = "proto_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "github.com/sfortson/random-scripts/go/grpc/pcbook/proto",
     proto = ":proto_proto",
     visibility = ["//visibility:public"],

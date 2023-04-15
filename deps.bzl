@@ -75,6 +75,13 @@ def go_dependencies():
         version = "v1.8.0",
     )
     go_repository(
+        name = "com_github_jinzhu_copier",
+        importpath = "github.com/jinzhu/copier",
+        sum = "h1:GlvfUwHk62RokgqVNvYsku0TATCF7bAHVwEXoBh3iJg=",
+        version = "v0.3.5",
+    )
+
+    go_repository(
         name = "com_github_pmezard_go_difflib",
         importpath = "github.com/pmezard/go-difflib",
         sum = "h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=",
