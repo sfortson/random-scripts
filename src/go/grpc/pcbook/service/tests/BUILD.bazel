@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "tests",
+    srcs = ["test_laptop_server.go"],
+    importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/service/tests",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/go/grpc/pcbook/proto",
+        "//src/go/grpc/pcbook/sample",
+        "//src/go/grpc/pcbook/serializer",
+        "//src/go/grpc/pcbook/service",
+        "@com_github_stretchr_testify//require",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
