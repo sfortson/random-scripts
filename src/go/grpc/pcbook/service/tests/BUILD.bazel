@@ -3,6 +3,8 @@ load("@io_bazel_rules_go//go:def.bzl", "go_test")
 go_test(
     name = "tests",
     srcs = ["test_laptop_server.go"],
+    # data = ["//src/go/grpc/pcbook/img:laptop.jpg"],
+    data = glob(["img/*"]),
     importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/service/tests",
     visibility = ["//visibility:public"],
     deps = [

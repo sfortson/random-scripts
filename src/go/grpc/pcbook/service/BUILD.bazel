@@ -3,6 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "service",
     srcs = [
+        "image_store.go",
         "laptop_server.go",
         "laptop_store.go",
     ],

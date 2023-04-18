@@ -111,7 +111,7 @@ func (store *InMemoryLaptopStore) Search(
 }
 
 func isQualified(filter *pb.Filter, laptop *pb.Laptop) bool {
-	if laptop.GetPriceUsd() > filter.GetMaxPriceUsd() {
+	if filter.GetMaxPriceUsd() > 0 && laptop.GetPriceUsd() > filter.GetMaxPriceUsd() {
 		return false
 	}
 

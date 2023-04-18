@@ -3,6 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "client_lib",
     srcs = ["main.go"],
+    data = ["//src/go/grpc/pcbook/img:laptop.jpg"],
     importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/cmd/client",
     visibility = ["//visibility:private"],
     deps = [
