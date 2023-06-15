@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sample",
+    srcs = [
+        "generator.go",
+        "random.go",
+    ],
+    importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/sample",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/go/grpc/pcbook/proto",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_google_uuid//:uuid",
+    ],
+)

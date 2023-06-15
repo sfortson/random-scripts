@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package src.go.grpc.pcbook;
+
+import "src/go/grpc/pcbook/proto/memory_message.proto";
+
+// protolint:disable:next MAX_LINE_LENGTH
+option go_package = "github.com/sfortson/random-scripts/go/grpc/pcbook/proto";
+
+message Filter {
+  double max_price_usd = 1;
+  uint32 min_cpu_cores = 2;
+  double min_cpu_ghz = 3;
+  Memory min_ram = 4;
+}

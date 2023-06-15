@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "service",
+    srcs = [
+        "image_store.go",
+        "laptop_server.go",
+        "laptop_store.go",
+    ],
+    importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook/service",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/go/grpc/pcbook/proto",
+        "@com_github_google_uuid//:uuid",
+        "@com_github_jinzhu_copier//:copier",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)

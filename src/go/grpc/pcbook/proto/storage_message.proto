@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package src.go.grpc.pcbook;
+
+import "src/go/grpc/pcbook/proto/memory_message.proto";
+
+// protolint:disable:next MAX_LINE_LENGTH
+option go_package = "github.com/sfortson/random-scripts/go/grpc/pcbook/proto";
+
+message Storage {
+  enum Driver {
+    DRIVER_UNKNOWN_UNSPECIFIED = 0;
+    DRIVER_HDD = 1;
+    DRIVER_SSD = 2;
+  }
+
+  Driver driver = 1;
+  Memory memory = 2;
+}

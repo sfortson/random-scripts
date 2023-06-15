@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "pcbook_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/sfortson/random-scripts/src/go/grpc/pcbook",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "pcbook",
+    embed = [":pcbook_lib"],
+    visibility = ["//visibility:public"],
+)
